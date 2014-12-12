@@ -1,0 +1,1 @@
+json.extract! @junior_enterprise, :id, :name, :logo, :description, :phrase, :site, :phone, :city, :state, :youtube, :facebook, :course, :area, :address, :consultor, :product, :access, :project, :training, :created_at, :updated_at, :user_id
