@@ -59,7 +59,11 @@ class UsersController < ApplicationController
   def log_in    
     user = User.find_by password: params[:password], email: params[:email]
 
-    render json: user
+    if user != nil
+      render json: user
+    else
+      head :no_content
+    end
   end
 
   def recover_email
