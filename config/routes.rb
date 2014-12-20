@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/search' => 'junior_enterprises#search'
   get '/junior_enterprises/:id/members' => 'junior_enterprises#find_members'
   get '/junior_enterprises/:id/messages' => 'junior_enterprises#find_messages'
+  post '/junior_enterprises/:id/seal' => 'junior_enterprises#seal'
 
   get '/users/:id/junior_enterprises' => 'users#find_junior_enterprise'
   post '/recover' => 'users#recover_email'

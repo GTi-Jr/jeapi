@@ -115,9 +115,18 @@ class JuniorEnterprisesController < ApplicationController
     render json: @je
   end
 
+  def seal
+    user = User.find(params[:id])
+    if user.junior_enterprise.seal
+      user.junior_enterprise.update_attributes( :seal => false ) ? (head :no_content) : (head :unprocessable_entity)
+    else
+      user.junior_enterprise.update_attributes( :seal => true ) ? (head :no_content) : (head :unprocessable_entity)
+    end
+  end
+
   private
     
     def junior_enterprise_params
-      params.permit(:user_id,:name, :logo, :description, :phrase, :site, :phone, :city, :state, :youtube, :facebook, :course, :area, :address, :consultor, :product, :access, :project, :training)
+      params.permit(:user_id,:name, :logo, :description, :phrase, :site, :phone, :city, :state, :youtube, :facebook, :course, :area, :address, :consultor, :product, :access, :project, :training, :seal)
     end
 end
