@@ -1,6 +1,6 @@
 class JuniorEnterprise < ActiveRecord::Base
 	before_create { set_to_zero(:access) }
-	before_create { set_to_false(:seal) }
+	after_create { set_to_false(:seal) }
 	
 
   	belongs_to :user	 
@@ -19,7 +19,8 @@ class JuniorEnterprise < ActiveRecord::Base
   end	
 
   def set_to_false(column)
-    self[column] = false 
+    self[column] = false
+    self.save
   end
 
 end

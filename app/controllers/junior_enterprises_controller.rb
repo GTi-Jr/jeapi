@@ -116,11 +116,11 @@ class JuniorEnterprisesController < ApplicationController
   end
 
   def seal
-    user = User.find(params[:id])
-    if user.junior_enterprise.seal
-      user.junior_enterprise.update_attributes( :seal => false ) ? (head :no_content) : (head :unprocessable_entity)
+    junior_enterprise = JuniorEnterprise.find(params[:id])
+    if junior_enterprise.seal
+      junior_enterprise.update_attributes( :seal => false ) ? (head :no_content) : (head :unprocessable_entity)
     else
-      user.junior_enterprise.update_attributes( :seal => true ) ? (head :no_content) : (head :unprocessable_entity)
+      junior_enterprise.update_attributes( :seal => true ) ? (head :no_content) : (head :unprocessable_entity)
     end
   end
 
