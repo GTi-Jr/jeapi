@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220100215) do
+ActiveRecord::Schema.define(version: 20141222090208) do
 
   create_table "junior_enterprises", force: true do |t|
     t.string   "name"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20141220100215) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
 end

@@ -1184,3 +1184,34 @@ Processing by JuniorEnterprisesController#index as */*
   [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
   [1m[36mJuniorEnterprise Load (0.9ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
 Completed 200 OK in 60ms (Views: 0.4ms | ActiveRecord: 4.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddStateToUsers (20141222090208)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "users" ADD "state" varchar(255)[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141222090208"]]
+  [1m[36m (95.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+[0m

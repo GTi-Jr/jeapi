@@ -25,7 +25,7 @@ class JuniorEnterprisesController < ApplicationController
   def show
     @junior_enterprise = JuniorEnterprise.find(params[:id])
 
-    if request.headers["access"] != 1
+    if request.headers["access"] != "1"
       @junior_enterprise.update(access: @junior_enterprise.access + 1)
     end
 
