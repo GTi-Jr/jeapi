@@ -24,7 +24,10 @@ class JuniorEnterprisesController < ApplicationController
   # GET /junior_enterprises/1.json
   def show
     @junior_enterprise = JuniorEnterprise.find(params[:id])
-    @junior_enterprise.access
+
+    if request.headers["access"] != 1
+      @junior_enterprise.update(access: @junior_enterprise.access + 1)
+    end
 
     render :json => @junior_enterprise.to_json(:include => [:messages, :members])
   end

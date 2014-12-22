@@ -1015,3 +1015,172 @@ Processing by JuniorEnterprisesController#index as */*
   [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
   [1m[36mJuniorEnterprise Load (1.3ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
 Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/keys" for 127.0.0.1 at 2014-12-22 04:17:54 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/keys"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (19.3ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.1ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (112.2ms)
+
+
+Started POST "/keys" for 127.0.0.1 at 2014-12-22 04:18:05 -0300
+Processing by KeysController#create as */*
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mKey Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "keys" ("created_at", "password", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-22 07:18:05.274394"], ["password", "X_k364B2MVARMMmYXBVh8m_jZLk"], ["updated_at", "2014-12-22 07:18:05.274394"]]
+  [1m[36m (123.1ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 317ms (Views: 1.3ms | ActiveRecord: 127.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:20 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 63ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:25 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:42 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (2.2ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:58 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 204 No Content in 14ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:19:01 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.6ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 204 No Content in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:19 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.5ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 13ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:27 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.8ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:28 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:30 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.8ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:53 -0300
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 1ms
+
+TypeError (no implicit conversion of nil into String):
+  app/controllers/application_controller.rb:4:in `+'
+  app/controllers/application_controller.rb:4:in `validate_token'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.6ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (55.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:21:33 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (2.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:24:40 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.6ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:26:19 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:25 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (1.4ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:46 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:48 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/junior_enterprises" for 127.0.0.1 at 2014-12-22 04:28:45 -0300
+Processing by JuniorEnterprisesController#index as */*
+  [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mJuniorEnterprise Load (0.9ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
+Completed 200 OK in 60ms (Views: 0.4ms | ActiveRecord: 4.8ms)
