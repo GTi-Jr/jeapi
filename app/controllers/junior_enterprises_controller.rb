@@ -24,7 +24,10 @@ class JuniorEnterprisesController < ApplicationController
   # GET /junior_enterprises/1.json
   def show
     @junior_enterprise = JuniorEnterprise.find(params[:id])
-    @junior_enterprise.access
+
+    if request.headers["access"] != "1"
+      @junior_enterprise.update(access: @junior_enterprise.access + 1)
+    end
 
     render :json => @junior_enterprise.to_json(:include => [:messages, :members])
   end
@@ -115,9 +118,18 @@ class JuniorEnterprisesController < ApplicationController
     render json: @je
   end
 
+  def seal
+    junior_enterprise = JuniorEnterprise.find(params[:id])
+    if junior_enterprise.seal
+      junior_enterprise.update_attributes( :seal => false ) ? (head :no_content) : (head :unprocessable_entity)
+    else
+      junior_enterprise.update_attributes( :seal => true ) ? (head :no_content) : (head :unprocessable_entity)
+    end
+  end
+
   private
     
     def junior_enterprise_params
-      params.permit(:user_id,:name, :logo, :description, :phrase, :site, :phone, :city, :state, :youtube, :facebook, :course, :area, :address, :consultor, :product, :access, :project, :training)
+      params.permit(:user_id,:name, :logo, :description, :phrase, :site, :phone, :city, :state, :youtube, :facebook, :course, :area, :address, :consultor, :product, :access, :project, :training, :seal)
     end
 end

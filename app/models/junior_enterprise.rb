@@ -1,5 +1,6 @@
 class JuniorEnterprise < ActiveRecord::Base
 	before_create { set_to_zero(:access) }
+	after_create { set_to_false(:seal) }
 	
 
   	belongs_to :user	 
@@ -13,9 +14,13 @@ class JuniorEnterprise < ActiveRecord::Base
 	validates :state, :presence => true
 	validates :course, :presence => true
 
-	/Auto zerando contador ao criar/
   def set_to_zero(column)
     self[column] = 0 
+  end	
+
+  def set_to_false(column)
+    self[column] = false
+    self.save
   end
 
 end

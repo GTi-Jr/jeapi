@@ -27,8 +27,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save      
-      UserNotifier.send_signup_email(@user).deliver
+    if @user.save
+      if @user.function == "user"     
+        UserNotifier.send_signup_email(@user).deliver
+      elsif @user.function == "federation"
+        UserNotifier.send_signup_email_federation(@user).deliver
+      end
+        
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -81,6 +86,6 @@ class UsersController < ApplicationController
   private
     
     def user_params
-      params.permit(:password, :email, :function)
+      params.permit(:password, :email, :function, :state)
     end
 end

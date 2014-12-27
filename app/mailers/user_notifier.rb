@@ -7,6 +7,12 @@ class UserNotifier < ActionMailer::Base
     :subject => 'Obrigado por se cadastrar - Vitrine de EJ' )
   end
 
+  def send_signup_email_federation(user)
+    @user = user
+    mail( :to => @user.email,
+    :subject => 'Obrigado por se cadastrar - Vitrine de EJ' )
+  end
+
   def send_recover_email(user)
     @user = user
     mail( :to => @user.email,

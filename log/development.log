@@ -796,3 +796,422 @@ Processing by UsersController#create as */*
   [1m[35mUser Exists (1.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1
   [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
 Completed 422 Unprocessable Entity in 135ms (Views: 1.5ms | ActiveRecord: 5.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSealToJuniorEnterprises (20141220100215)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.9ms)[0m  [1mALTER TABLE "junior_enterprises" ADD "seal" boolean[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141220100215"]]
+  [1m[36m (128.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+[0m
+
+
+Started GET "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:14:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JuniorEnterprisesController#index as */*
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mJuniorEnterprise Load (1.2ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
+Completed 200 OK in 97ms (Views: 0.7ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:16:08 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (0.9ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 153ms
+
+ActiveModel::MissingAttributeError (can't write unknown attribute `access'):
+  app/models/junior_enterprise.rb:18:in `set_to_zero'
+  app/models/junior_enterprise.rb:2:in `block in <class:JuniorEnterprise>'
+  app/controllers/junior_enterprises_controller.rb:38:in `create'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (39.8ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.6ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (80.9ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:17:53 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (2.6ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (0.6ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 107ms
+
+ActiveModel::MissingAttributeError (can't write unknown attribute `access'):
+  app/models/junior_enterprise.rb:18:in `set_to_zero'
+  app/models/junior_enterprise.rb:2:in `block in <class:JuniorEnterprise>'
+  app/controllers/junior_enterprises_controller.rb:38:in `create'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.7ms)
+  [1m[36m (74.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (156.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20141209003209)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "password" varchar(255), "function" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141209003209"]]
+  [1m[35m (95.1ms)[0m  commit transaction
+Migrating to CreateJuniorEnterprises (20141209004257)
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "junior_enterprises" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "logo" varchar(255), "description" text, "phrase" text, "site" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "youtube" varchar(255), "facebook" varchar(255), "course" varchar(255), "area" varchar(255), "address" varchar(255), "consultor" boolean, "product" boolean, "access" integer, "project" boolean, "training" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_junior_enterprises_on_user_id" ON "junior_enterprises" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141209004257"]]
+  [1m[36m (79.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMembers (20141209004352)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "members" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "photo" varchar(255), "position" varchar(255), "junior_enterprise_id" integer, "phone" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX "index_members_on_junior_enterprise_id" ON "members" ("junior_enterprise_id")
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141209004352"]]
+  [1m[35m (119.5ms)[0m  commit transaction
+Migrating to CreateMessages (20141209004501)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "email" varchar(255), "phone" varchar(255), "name" varchar(255), "junior_enterprise_id" integer, "read" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX "index_messages_on_junior_enterprise_id" ON "messages" ("junior_enterprise_id")[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141209004501"]]
+  [1m[36m (131.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateKeys (20141209023946)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "password" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141209023946"]]
+  [1m[36m (126.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddSealToJuniorEnterprises (20141220100215)
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "junior_enterprises" ADD "seal" boolean[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141220100215"]]
+  [1m[36m (122.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+
+  [1m[36m (0.4ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+[0m
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:19:25 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (0.9ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (1.7ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 203ms (Views: 1.3ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:19:33 -0300
+Processing by JuniorEnterprisesController#index as */*
+  [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mJuniorEnterprise Load (0.7ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:19:51 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (0.6ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (0.7ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 31ms (Views: 0.7ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/keys" for 127.0.0.1 at 2014-12-20 07:20:49 -0300
+Processing by KeysController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+Unpermitted parameters: name, description, city, state, course
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mKey Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "keys"  WHERE "keys"."password" = 'K7F9aLllWQO0D22wbyzjIJeorog' LIMIT 1[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "keys" ("created_at", "password", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-20 10:20:49.756337"], ["password", "K7F9aLllWQO0D22wbyzjIJeorog"], ["updated_at", "2014-12-20 10:20:49.756337"]]
+  [1m[36m (181.4ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 325ms (Views: 2.6ms | ActiveRecord: 187.3ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:21:07 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (3.6ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (2.6ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 34ms (Views: 0.5ms | ActiveRecord: 7.3ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:21:36 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (0.6ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (0.8ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 20ms (Views: 1.8ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:22:51 -0300
+Processing by JuniorEnterprisesController#create as */*
+  Parameters: {"name"=>"GTi", "description"=>"OI", "city"=>"Fortaleza", "state"=>"Ceará", "course"=>"Engenharia da Computação"}
+  [1m[35mKey Load (0.9ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mJuniorEnterprise Exists (0.6ms)[0m  SELECT  1 AS one FROM "junior_enterprises"  WHERE "junior_enterprises"."name" = 'GTi' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+Completed 422 Unprocessable Entity in 20ms (Views: 0.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/junior_enterprises" for 127.0.0.1 at 2014-12-20 07:22:57 -0300
+Processing by JuniorEnterprisesController#index as */*
+  [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mJuniorEnterprise Load (1.3ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/keys" for 127.0.0.1 at 2014-12-22 04:17:54 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/keys"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/gui/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (19.3ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.1ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (112.2ms)
+
+
+Started POST "/keys" for 127.0.0.1 at 2014-12-22 04:18:05 -0300
+Processing by KeysController#create as */*
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mKey Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "keys" ("created_at", "password", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-12-22 07:18:05.274394"], ["password", "X_k364B2MVARMMmYXBVh8m_jZLk"], ["updated_at", "2014-12-22 07:18:05.274394"]]
+  [1m[36m (123.1ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 317ms (Views: 1.3ms | ActiveRecord: 127.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:20 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 63ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:25 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:42 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (2.2ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 32ms (Views: 0.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:18:58 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 204 No Content in 14ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:19:01 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.6ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 204 No Content in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:19 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.5ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 13ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:27 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.8ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:28 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.0ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:30 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.8ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:20:53 -0300
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 1ms
+
+TypeError (no implicit conversion of nil into String):
+  app/controllers/application_controller.rb:4:in `+'
+  app/controllers/application_controller.rb:4:in `validate_token'
+
+
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.6ms)
+  Rendered /home/gui/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (55.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:21:33 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (2.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 17ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:24:40 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (0.6ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:26:19 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (1.3ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:25 -0300
+Processing by UsersController#index as */*
+  [1m[36mKey Load (1.4ms)[0m  [1mSELECT  "keys".* FROM "keys"  WHERE "keys"."password" IS NULL LIMIT 1[0m
+Filter chain halted as :validate_token rendered or redirected
+Completed 401 Unauthorized in 9ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:46 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-12-22 04:27:48 -0300
+Processing by UsersController#index as */*
+  [1m[35mKey Load (0.7ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/junior_enterprises" for 127.0.0.1 at 2014-12-22 04:28:45 -0300
+Processing by JuniorEnterprisesController#index as */*
+  [1m[35mKey Load (1.1ms)[0m  SELECT  "keys".* FROM "keys"  WHERE "keys"."password" = 'X_k364B2MVARMMmYXBVh8m_jZLk' LIMIT 1
+  [1m[36mJuniorEnterprise Load (0.9ms)[0m  [1mSELECT "junior_enterprises".* FROM "junior_enterprises"[0m
+Completed 200 OK in 60ms (Views: 0.4ms | ActiveRecord: 4.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddStateToUsers (20141222090208)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "users" ADD "state" varchar(255)[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141222090208"]]
+  [1m[36m (95.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_junior_enterprises_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_members_on_junior_enterprise_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_junior_enterprise_id' AND type='index'
+[0m

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209023946) do
+ActiveRecord::Schema.define(version: 20141222090208) do
 
   create_table "junior_enterprises", force: true do |t|
     t.string   "name"
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 20141209023946) do
     t.string   "address"
     t.boolean  "consultor"
     t.boolean  "product"
-    t.integer  "accesss"
+    t.integer  "access"
     t.boolean  "project"
     t.boolean  "training"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "seal"
   end
 
   add_index "junior_enterprises", ["user_id"], name: "index_junior_enterprises_on_user_id"
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20141209023946) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
 end
