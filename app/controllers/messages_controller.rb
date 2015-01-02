@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
   end
 
   def read
-    @message = JuniorEnterprise.find(params[:id]).messages
+    @messages = JuniorEnterprise.find(params[:id]).messages
 
     @messages.where('read = ?', false).each do |me|
       me.read = true
