@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :edit]
 
   post '/feedback' => 'messages#feedback'
-  put 'messages/read' => 'messages#read'
+  put 'messages/read/:id' => 'messages#read'
 
   get '/search' => 'junior_enterprises#search'
   get '/junior_enterprises/:id/members' => 'junior_enterprises#find_members'
